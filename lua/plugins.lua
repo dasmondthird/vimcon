@@ -1,26 +1,8 @@
 -- plugins.lua
 
--- Убедитесь, что lazy.nvim установлен
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    lazypath,
-  })
-end
-vim.opt.rtp:prepend(lazypath)
-
--- Настройка пакетов через lazy.nvim
 require('lazy').setup({
-  -- Цветовые схемы
+  -- Цветовая схема
   'folke/tokyonight.nvim',
-  'catppuccin/nvim',
-  'EdenEast/nightfox.nvim',
-  'Mofiqul/dracula.nvim',
-  'ellisonleao/gruvbox.nvim',
   -- Статусная линия
   'nvim-lualine/lualine.nvim',
   'kyazdani42/nvim-web-devicons', -- Требуется для nvim-tree и lualine
@@ -46,7 +28,10 @@ require('lazy').setup({
   -- Подсказки для клавиш
   'folke/which-key.nvim',
   -- Приветственное окно
-  'glepnir/dashboard-nvim',
+  {
+    'goolord/alpha-nvim',
+    requires = { 'kyazdani42/nvim-web-devicons' }
+  },
   -- Улучшение интерфейса уведомлений и диалогов
   'folke/noice.nvim',
   'stevearc/dressing.nvim',
@@ -60,4 +45,12 @@ require('lazy').setup({
   'akinsho/bufferline.nvim',
   -- Улучшение навигации между окнами
   'troydm/zoomwintab.vim',
+  -- Оптимизация производительности
+  'lewis6991/impatient.nvim',
+  -- Плагин для быстрого перемещения по тексту
+  'easymotion/vim-easymotion',
+  -- Альтернатива EasyMotion
+  'phaazon/hop.nvim',
+  -- Плагин для прозрачности
+  'xiyaowong/nvim-transparent',
 })
